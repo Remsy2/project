@@ -1,8 +1,8 @@
-const div = document.getElementById("github");
+let title;
+let screens;
+let screenPrice;
+let rollback;
+let fullPrice;
+let adaptive;
 
-const logged = () => {
-  console.log(div.textContent);
-  console.log("commits");
-};
-
-console.log("Hello world!");
+alert("Instructions for the user:");
