@@ -1,0 +1,96 @@
+/* базовая подготовка */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Raleway, sans-serif;
+}
+
+/* страница */
+.page {
+  position: relative; /* чтобы абсолюты (видео/тултип) считались от body */
+  display: flex; /* сделаем заголовок flex-элементом (z-index сработает) */
+  align-items: flex-start; /* по макету заголовок сверху, но можно центрировать при необходимости */
+  justify-content: center;
+  padding-top: 60px; /* верхний отступ под заголовок */
+  min-width: 800px; /* ограничиваем ширину, мобилку пока не верстаем */
+  height: 100%;
+  background-color: #fec7ee;
+  isolation: isolate; /* отдельный контекст наложения для безопасности слоёв */
+}
+
+/* вуаль над видео (первый псевдоэлемент страницы) */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(255 255 255 / 0.3);
+  z-index: 1; /* вуаль над видео, но под заголовком/тултипом */
+}
+
+/* видео: автоплей, без звука, без контролов, постер; подгон под контейнер */
+.page__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0; /* самое нижнее */
+}
+
+/* заголовок (второй элемент в body) */
+.page__title {
+  margin: 0;
+  max-width: 720px;
+  font-size: 116px;
+  letter-spacing: 3.5px;
+  text-align: center;
+  line-height: 1; /* обычно такой крупный кегль требует плотной линии */
+  color: #000;
+  z-index: 2; /* выше вуали и видео */
+  /* не позиционируем! (position: static)
+     чтобы тултип позиционировался от .page */
+}
+
+/* звездочка у заголовка (второй псевдоэлемент — у заголовка) */
+.page__title::after {
+  content: "★";
+  margin-left: 16px; /* лёгкий отступ от текста */
+  font-size: 0.6em; /* звёздочка чуть меньше */
+  vertical-align: middle;
+}
+
+/* тултип (третий псевдоэлемент — у заголовка) */
+.page__title:hover::before {
+  content: "На самом деле нет.\AВажнее — научиться ошибаться."; /* \A = перенос строки */
+  white-space: pre; /* чтобы \A стал переносом */
+  position: absolute; /* позиционируем относительно .page (см. .page { position:relative }) */
+  top: 180px; /* подстрой под свой макет */
+  right: 20px;
+  max-width: 760px;
+  padding: 20px 24px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  box-shadow: 0 12px 0 #000;
+  background-color: #fff;
+  color: #000;
+  font: normal 35px/1 Raleway, sans-serif;
+  text-align: left;
+  z-index: 3; /* выше всего */
+  pointer-events: none; /* тултип не перехватывает курсор */
+}
+
+/* интерактивный оттенок заголовка по hover (необязательно) */
+.page__title:hover {
+  color: #4c4c4c;
+}

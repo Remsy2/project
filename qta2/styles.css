@@ -1,0 +1,41 @@
+.link {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+.link_active {
+  text-decoration: none;
+}
+
+.logo img {
+  width: 128px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  background-color: lime;
+}
+
+.address_type_header {
+  max-width: 240px;
+}
+
+.address_type_footer {
+  max-width: 265px;
+}
+
+.header {
+  display: flex;
+}
+
+.footer {
+  display: flex;
+}

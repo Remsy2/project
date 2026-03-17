@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Искусство мыслить креативно</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 50px;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .header .subtitle {
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        counter-increment: card-counter; /* Для нумерации */
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-title {
+        font-size: 1.4em;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+
+      .card-content {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Нумерация для четных команд */
+      .card::before {
+        content: counter(card-counter);
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background: #ff6b6b;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2em;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Теги для нечетных команд - закомментированы */
+      /*
+        .card::after {
+            content: "Творчество";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #4ecdc4;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        */
+
+      /* Альтернативный вариант тегов - раскомментировать для нечетных команд */
+      .card:nth-child(odd)::after {
+        content: 'Инновация';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        background: #45b7d1;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: bold;
+      }
+
+      .card:nth-child(even)::after {
+        content: 'Креатив';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        background: #96ceb4;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .instructions h2 {
+        color: #333;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .instructions ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .instructions li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .instructions li:last-child {
+        border-bottom: none;
+      }
+
+      .time-notice {
+        background: #ffeaa7;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Роджер фон Оехль и Франсиск Берри</h1>
+        <div class="subtitle">Искусство мыслить креативно</div>
+      </div>
+
+      <div class="instructions">
+        <h2>Задание в сессионном зале</h2>
+        <ul>
+          <li>
+            <strong>Что нужно сделать:</strong> В карточках с помощью
+            псевдоэлементов добавить теги или нумерацию
+          </li>
+          <li>🔸 <strong>Нечетные команды:</strong> добавляют теги</li>
+          <li>🔹 <strong>Четные команды:</strong> добавляют нумерацию</li>
+        </ul>
+        <div class="time-notice">⏱ Время на выполнение: 10 минут</div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-title">Мышление вне рамок</div>
+          <div class="card-content">
+            Исследуйте нестандартные подходы к решению привычных задач.
+            Развивайте способность видеть возможности там, где другие видят
+            ограничения.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Ассоциативное мышление</div>
+          <div class="card-content">
+            Соединяйте несоединяемое. Находите связи между, казалось бы, не
+            связанными понятиями и идеями.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Эмпатия и понимание</div>
+          <div class="card-content">
+            Умение ставить себя на место других людей - ключ к созданию
+            действительно значимых идей и продуктов.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Экспериментальный подход</div>
+          <div class="card-content">
+            Не бойтесь пробовать новое. Каждый эксперимент, даже неудачный,
+            приближает вас к инновационному решению.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Работа с ограничениями</div>
+          <div class="card-content">
+            Ограничения - это не препятствия, а катализаторы креативности. Они
+            заставляют искать неочевидные пути.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Коллаборация идей</div>
+          <div class="card-content">
+            Самые интересные решения рождаются на стыке разных дисциплин и точек
+            зрения.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Простой скрипт для демонстрации интерактивности
+      document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach((card) => {
+          card.addEventListener('click', function () {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+              this.style.transform = '';
+            }, 150);
+          });
+        });
+
+        console.log('Для четных команд: используется нумерация через ::before');
+        console.log(
+          'Для нечетных команд: закомментировать ::before и раскомментировать ::after в CSS'
+        );
+      });
+    </script>
+  </body>
+</html>
